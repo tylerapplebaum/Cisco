@@ -4,25 +4,25 @@
 .DESCRIPTION
     Connect-DMVPN-HE.ps1 can verify connectivity to a range of network devices and perform various show and other commands. A $Stream.Write must be performed to execute any commands. This should be followed by a sleep command to allow the router time to generate the output.
 .PROTIP
-	Grab the output of long commands by setting the terminal length to 0 to disable pagination. "term len 0"
+  Grab the output of long commands by setting the terminal length to 0 to disable pagination. "term len 0"
 .NOTES
-  File Name		       : Connect-DMVPN-HE.ps1
-  Author			       : Tyler Applebaum
-  Requires		       : PowerShell v3
-	Last Contributor   :
-	Last Edited		     : 01/29/2015
-	Version			       : 1.1
+  File Name: Connect-DMVPN-HE.ps1
+  Author: Tyler Applebaum
+  Requires: PowerShell v3
+  Last Contributor:
+  Last Edited: 01/29/2015
+  Version: 1.1
 .LINK
-	http://tylerapplebaum.github.io
+  http://tylerapplebaum.github.io
 .EXAMPLE
   C:\PS> .\Connect-CiscoIOS.ps1 -Subnet 10.160.1.1-10.160.1.254 -Username root
-	This will query the entirety of Active Directory to run the report against. Can take a bit of time.
+  This will query the entirety of Active Directory to run the report against. Can take a bit of time.
 .PARAMETER subnet
-	Specify a single IP or a range of IPs to attempt to connect to
+  Specify a single IP or a range of IPs to attempt to connect to
 .PARAMETER sublist
-	Specify a .txt file with one entry per line containing the IPs or hostnames to attempt to connect to
+  Specify a .txt file with one entry per line containing the IPs or hostnames to attempt to connect to
 .PARAMETER username
-	Specify the username to use to connect to the network devices
+  Specify the username to use to connect to the network devices
 #>
 #Requires -version 3.0
 [CmdletBinding()]
