@@ -16,7 +16,6 @@
   http://tylerapplebaum.github.io
 .EXAMPLE
   C:\PS> .\Connect-CiscoIOS.ps1 -Subnet 10.160.1.1-10.160.1.254 -Username root
-  This will query the entirety of Active Directory to run the report against. Can take a bit of time.
 .PARAMETER subnet
   Specify a single IP or a range of IPs to attempt to connect to
 .PARAMETER sublist
