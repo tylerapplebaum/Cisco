@@ -1,0 +1,13 @@
+event manager environment filename before_cutover.conf
+event manager environment location flash0:/
+event manager environment destination startup-config
+event manager applet LOAD-OLD-CONFIG
+ event syslog occurs 1 pattern "%SYS-5-RESTART: System restarted"
+ event timer countdown time 300
+ action 1.0 cli command "enable"
+ action 1.2 cli command "conf t"
+ action 1.4 cli command "file prompt quiet"
+ action 1.6 cli command "end"
+ action 2.0 cli command "copy `$location`$filename `$destination"
+ action 2.2 cli command "y"
+ action 3.0 reload
