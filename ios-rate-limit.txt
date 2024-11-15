@@ -1,0 +1,33 @@
+1811R1#ping 192.168.1.2 size 180 rep 30     
+Type escape sequence to abort.
+Sending 30, 180-byte ICMP Echos to 192.168.1.2, timeout is 2 seconds:
+!!!!!!!!!.!!!!!!!!!!.!!!!!!!!!
+Success rate is 93 percent (28/30), round-trip min/avg/max = 1/1/4 ms
+1811R1#ping 2010::2 size 180 rep 30    
+Type escape sequence to abort.
+Sending 30, 180-byte ICMP Echos to 2010::2, timeout is 2 seconds:
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Success rate is 100 percent (30/30), round-trip min/avg/max = 0/0/4 ms
+
+1811R2#sh run int f1
+Building configuration...
+
+Current configuration : 288 bytes
+!
+interface FastEthernet1
+ ip address 192.168.1.2 255.255.255.0
+ rate-limit input 8000 1500 2000 conform-action continue exceed-action drop
+ rate-limit input access-group 100 8000 1500 2000 conform-action continue exceed-action drop
+ duplex auto
+ speed auto
+ ipv6 address 2010::2/64
+end
+
+1811R2#sh ip access-list 100
+Extended IP access list 100
+    10 permit ip any any (83 matches)
+
+1811R2#sh ipv6 access-list 
+IPv6 access list ipv6-limit
+    permit ipv6 2010::/64 any sequence 10
+

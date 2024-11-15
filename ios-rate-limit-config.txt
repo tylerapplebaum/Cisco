@@ -1,0 +1,18 @@
+ipv6 access-list ipv6-limit
+ permit ipv6 2010::/64 any
+!
+class-map match-all ipv6-class-map
+ match access-group name ipv6-limit
+!
+
+policy-map ipv6-policy-map
+ class ipv6-class-map
+  police 8000 1500 conform-action transmit exceed-action drop
+!
+interface FastEthernet1
+ ip address 192.168.1.2 255.255.255.0
+ duplex auto
+ speed auto
+ ipv6 address 2010::2/64
+ service-policy input ipv6-policy-map
+!
